@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>catalogo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <div style="background-color: black; height: 100%;">
+      <ion-card-content>
+        <ion-item>
+        <ion-button type="submit" routerLink="/perfil">PERFIL</ion-button>
+      </ion-item>
+
+        <ion-button  (click)="pServ.cargarProductosAnteriores()" color="danger" >ANTERIORES</ion-button>
+        <ion-button (click)="pServ.consultarProductos()">SIGUIENTE</ion-button>
+
+
+        <ion-list>
+          <ion-list *ngIf="pServ.productos">
+            <ion-item *ngFor="let p of pServ.productos" class="background-black">
+
+              <img [src]="p.thumbnail" style="border-radius: 50%; width: 100px; height: 100px; object-fit: cover;">
+
+              <div>
+                <ion-label style="margin-left: 20px;">{{p.title}}</ion-label>
+                <div style="color: blue; margin-left: 20px;">${{p.price}}</div>
+                <div style="color: green; margin-left: 20px;">{{p.discountPercentage}}%</div>
+              </div>
+
+            </ion-item>
+          </ion-list>
+        </ion-list>
+
+      </ion-card-content>
+    </div>
+  </ion-card>
+
+
+
+</ion-content>
